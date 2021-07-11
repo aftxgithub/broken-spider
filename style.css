@@ -36,3 +36,8 @@
     margin: 8px 0;
     font-size: 13px;
 }
+
+#link-status {
+    display: flex;
+    justify-content: space-between;
+}
