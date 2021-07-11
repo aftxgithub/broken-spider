@@ -1,14 +1,19 @@
 const template = `
 <search-box :submit="onSubmit"></search-box>
-<status-label></status-label>
+<status-label :workstatus="workstatus"></status-label>
 <link-status></link-status>
 `
 
 export default {
   template,
+  data() {
+    return {
+      workstatus: null
+    }
+  },
   methods: {
     onSubmit(url) {
-      console.log(url)
+      this.workstatus = "working"
     }
   }
 }
