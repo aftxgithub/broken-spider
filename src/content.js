@@ -1,9 +1,14 @@
 const template = `
-<search-box></search-box>
+<search-box :submit="onSubmit"></search-box>
 <status-label></status-label>
 <link-status></link-status>
 `
 
 export default {
-  template
+  template,
+  methods: {
+    onSubmit(url) {
+      console.log(url)
+    }
+  }
 }
