@@ -1,6 +1,13 @@
-const rootCmpt = {
-    template: `<h1>Hello World</h1>`
+import PageHeader from './header.js';
+
+const rootTemplate = `
+<page-header></page-header>
+`
+const root = {
+    template: rootTemplate
 }
 
-const app = Vue.createApp(rootCmpt)
+const app = Vue.createApp(root)
+// register cmpts
+app.component('page-header', PageHeader);
 app.mount("#app")
