@@ -2,6 +2,7 @@ import PageHeader from './header.js';
 import PageContent from './content.js'
 import SearchBox from './searchbox.js'
 import StatusLabel from './statuslabel.js'
+import LinkStatus from './linkstatus.js'
 
 const rootTemplate = `
 <page-header></page-header>
@@ -19,5 +20,6 @@ app.component('page-header', PageHeader)
 app.component('page-content', PageContent)
 app.component('search-box', SearchBox)
 app.component('status-label', StatusLabel)
+app.component('link-status', LinkStatus)
 
 app.mount("#app")
