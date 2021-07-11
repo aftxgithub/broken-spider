@@ -1,9 +1,10 @@
 const template = `
 <div id="link-status">
-    <a href="#">https://test.com</a>
-    <span class="status">Yes</span>
+    <a href="#">{{ link }}</a>
+    <span class="status">{{ broken ? 'Bad' : 'Good' }}</span>
 </div>
 `
 export default {
-    template
+    template,
+    props: ['link', 'broken']
 }

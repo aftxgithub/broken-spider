@@ -1,14 +1,15 @@
 const template = `
 <search-box :submit="onSubmit"></search-box>
 <status-label :workstatus="workstatus"></status-label>
-<link-status></link-status>
+<link-status v-for="linkStatus in linkStatuses" :link="linkStatus.link" :broken="linkStatus.broken" />
 `
 
 export default {
   template,
   data() {
     return {
-      workstatus: null
+      workstatus: null,
+      linkStatuses: []
     }
   },
   methods: {
