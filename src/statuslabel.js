@@ -1,5 +1,5 @@
 const template = `
-<p>Working...</p>
+<p id="status-label">Working...</p>
 `
 export default {
     template

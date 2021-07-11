@@ -17,17 +17,22 @@
     margin-top: 50px;
 }
 
-.header {
+#header {
     text-align: center;
     margin: 32px 0;
 }
 
 /* make search input bigger */
-.searchbox {
+#searchbox {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
     color: #333;
+}
+
+#status-label {
+    margin: 8px 0;
+    font-size: 13px;
 }
