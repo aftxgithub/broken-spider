@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net"
+	"time"
 	"net/http"
 	"os"
 
@@ -11,15 +12,25 @@ import (
 )
 
 func main() {
+	setRoutes()
 	srv := http.Server{
 		Addr:    getAddrFromEnv(),
-		Handler: newSpiderHandler(),
+		Handler: http.DefaultServeMux,
+		ReadTimeout: 10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout: 10 * time.Second,
 	}
 
 	log.Println("Starting server on", srv.Addr)
 	if err := srv.ListenAndServe(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func setRoutes() {
+	http.Handle("/", http.FileServer(http.Dir("./static")))
+	// serve the spider on /spider
+	http.Handle("/spider", newSpiderHandler())
 }
 
 type spiderHandler struct {
