@@ -18,12 +18,15 @@ export default {
   },
   methods: {
     onSubmit(url) {
-      this.workstatus = "working"
       this.populateLinkStatuses(url)
     },
     
     populateLinkStatuses(url) {
       let ws = new WebSocket(`ws://${window.location.host}/spider?url=${url}`)
+
+      ws.onopen = () => {
+        this.workstatus = "working"
+      }
 
       ws.onmessage = (e) => {
         let data = JSON.parse(e.data)
