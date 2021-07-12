@@ -1,3 +1,7 @@
+import searchBox from './searchbox.js'
+import statusLabel from './statuslabel.js'
+import linkStatus from './linkstatus.js'
+
 const template = `
 <search-box :submit="onSubmit"></search-box>
 <status-label :workstatus="workstatus"></status-label>
@@ -16,5 +20,10 @@ export default {
     onSubmit(url) {
       this.workstatus = "working"
     }
+  },
+  components: {
+    searchBox,
+    statusLabel,
+    linkStatus
   }
 }
