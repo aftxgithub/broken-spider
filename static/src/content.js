@@ -5,7 +5,7 @@ import linkStatus from './linkstatus.js'
 const template = `
 <search-box :submit="onSubmit"></search-box>
 <status-label :workstatus="workstatus"></status-label>
-<link-status v-for="linkStatus in linkStatuses" :link="linkStatus.link" :broken="linkStatus.broken" />
+<link-status v-for="linkStatus in linkStatuses" :link="linkStatus.url" :broken="linkStatus.broken" />
 `
 
 export default {
@@ -19,6 +19,25 @@ export default {
   methods: {
     onSubmit(url) {
       this.workstatus = "working"
+      this.populateLinkStatuses(url)
+    },
+    
+    populateLinkStatuses(url) {
+      let ws = new WebSocket(`ws://${window.location.host}/spider?url=${url}`)
+
+      ws.onmessage = (e) => {
+        let data = JSON.parse(e.data)
+        // insert to beginning of array
+        this.linkStatuses.unshift(data)
+      }
+
+      ws.onclose = () => {
+        this.workstatus = "success"
+      }
+
+      ws.onerror = (e) => {
+        this.workstatus = "failure"
+      }
     }
   },
   components: {
