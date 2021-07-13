@@ -5,7 +5,7 @@ import linkStatus from './linkstatus.js'
 const template = `
 <search-box :submit="onSubmit"></search-box>
 <status-label :workstatus="workstatus"></status-label>
-<link-status v-for="linkStatus in linkStatuses" :link="linkStatus.url" :broken="linkStatus.broken" />
+<link-status v-for="linkStatus in linkStatuses" v-bind="linkStatus"/>
 `
 
 export default {
