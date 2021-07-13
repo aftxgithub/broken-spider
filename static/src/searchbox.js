@@ -3,7 +3,7 @@ const template = `
 `
 export default {
   template,
-  props: ['submit'],
+  emits: ["submit"],
   data() {
     return {
       url: null
@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     onSubmit(e) {
-      this.submit(this.url)
+      this.$emit("submit", this.url)
     }
   }
 }

@@ -3,7 +3,7 @@ import statusLabel from './statuslabel.js'
 import linkStatus from './linkstatus.js'
 
 const template = `
-<search-box :submit="onSubmit"></search-box>
+<search-box @submit="onSubmit"></search-box>
 <status-label :workstatus="workstatus"></status-label>
 <link-status v-for="linkStatus in linkStatuses" v-bind="linkStatus"/>
 `
